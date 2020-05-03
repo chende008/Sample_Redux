@@ -1,23 +1,32 @@
 import React from 'react';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+import {applyMiddleware, createStore} from 'redux';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider, useSafeArea} from 'react-native-safe-area-context';
 import {RootSiblingParent} from 'react-native-root-siblings';
 
-import LaunchController from './Main/Welcome/LaunchController';
-import MainController from './Main/Page/MainController';
-import StorageController from './Main/Page/Others/StorageController';
-import WebViewController from './Main/Page/Others/WebViewController';
+import LaunchController from './main/LaunchController';
+import MainController from './main/MainController';
+import StorageController from './compoments/StorageController';
+import WebViewController from './compoments/others/WebViewController';
+import rootReducer from './reducers/rootReducer';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default function App() {
     console.disableYellowBox = true;
-    return <SafeAreaProvider>
-        <NavigationContainer>
-            <RootSiblingParent>
-                <ScreenList/>
-            </RootSiblingParent>
-        </NavigationContainer>
-    </SafeAreaProvider>;
+    return <Provider store={store}>
+        <SafeAreaProvider>
+            <NavigationContainer>
+                <RootSiblingParent>
+                    <ScreenList/>
+                </RootSiblingParent>
+            </NavigationContainer>
+        </SafeAreaProvider>
+    </Provider>;
 }
 
 function ScreenList() {

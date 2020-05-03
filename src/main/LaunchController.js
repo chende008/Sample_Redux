@@ -3,9 +3,9 @@ import {useSafeArea} from 'react-native-safe-area-context';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import {RFStorage, RFWidget} from 'react-native-fast-app';
-import {RNStorage} from '../Common/storage/AppStorage';
-import {Assets} from '../Common/http/Api';
-import RFLog from '../Common/utils/RFLog';
+import {RNStorage} from '../common/storage/AppStorage';
+import {Assets} from '../common/http/Api';
+import RFLog from '../common/utils/RFLog';
 
 export default class LaunchController extends PureComponent {
 

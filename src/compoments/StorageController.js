@@ -1,49 +1,41 @@
 import React, {PureComponent} from 'react';
 import {Clipboard, ScrollView, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-import {Colors, CommonStyles} from '../../Common/storage/Const';
-import {toStr} from '../../Common/utils/Utils';
-import {dateFormat} from '../../Common/utils/DateUtils';
-import {RNStorage} from '../../Common/storage/AppStorage';
+import {Colors, CommonStyles} from '../common/storage/Const';
+import {toStr} from '../common/utils/Utils';
+import {dateFormat} from '../common/utils/DateUtils';
+import {RNStorage} from '../common/storage/AppStorage';
 import {RFText, RFView} from 'react-native-fast-app';
-import {NavigationBar} from '../../Common/widgets/WidgetNavigation';
-import {RNItem, RNLine} from '../../Common/widgets/WidgetDefault';
+import {NavigationBar} from '../common/widgets/WidgetNavigation';
+import {RNItem, RNLine} from '../common/widgets/WidgetDefault';
 import DeviceInfo from 'react-native-device-info';
-import {showToast} from '../../Common/widgets/Loading';
+import {showToast} from '../common/widgets/Loading';
+import {getJson, getStr, raiseCount} from '../actions/storeAction';
 
-export default class StorageController extends PureComponent {
+const person = {age: 25, name: 'Tom', gender: 'male', time: dateFormat(new Date(), 'yyyy-MM-dd hh:mm')};
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: '',
-            json: {
-                age: 25,
-                name: 'Tom',
-                gender: 'male',
-                time: dateFormat(new Date(), 'yyyy-MM-dd hh:mm'),
-            },
-            dataChangedCount: 0,//数据变更统计
-        };
-    }
+class StorageController extends PureComponent {
+
+    //this.setState({text:  }) ||  this.setState({text: JSON.stringify(RNStorage.json)})
 
     render() {
-        let {text, json, dataChangedCount} = this.state;
+        let {text, dataChangedCount, getStr, getJson, raiseCount} = this.props;
         return <SafeAreaView style={CommonStyles.container}>
             <NavigationBar title='数据存储'/>
             <RFView>
                 <RFView style={{flexDirection: 'row'}}>
                     <RNItem text='设置字符串' style={{flex: 1}} onPress={() => RNStorage.str = 'this is a string '}/>
-                    <RNItem text='获取字符串' style={{flex: 1}} onPress={() => this.setState({text: RNStorage.str + dateFormat(new Date(), 'yyyy-MM-dd hh:mm')})}/>
+                    <RNItem text='获取字符串' style={{flex: 1}} onPress={() => getStr(RNStorage.str)}/>
                 </RFView>
                 <RFView style={{flexDirection: 'row'}}>
-                    <RNItem text='设置Json' style={{flex: 1}} onPress={() => RNStorage.json = json}/>
-                    <RNItem text='获取Json' style={{flex: 1}} onPress={() => this.setState({text: JSON.stringify(RNStorage.json)})}/>
+                    <RNItem text='设置Json' style={{flex: 1}} onPress={() => RNStorage.json = person}/>
+                    <RNItem text='获取Json' style={{flex: 1}} onPress={() => getJson()}/>
                 </RFView>
                 <RNItem text='随机字符串' onPress={() => {
                     RNStorage[DeviceInfo.getBundleId()] = '随机数据value：' + new Date().valueOf();
-                    this.setState({dataChangedCount: dataChangedCount + 1});
+                    raiseCount(dataChangedCount);
                 }}/>
             </RFView>
             <ScrollView>{
@@ -60,6 +52,8 @@ export default class StorageController extends PureComponent {
         </SafeAreaView>;
     }
 }
+
+export default connect(state => ({...state.storeReducer}), {getStr, getJson, raiseCount})(StorageController);
 
 const styles = StyleSheet.create({
     text: {

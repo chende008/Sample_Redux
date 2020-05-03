@@ -32,7 +32,6 @@
     "react-native-webview": "9.0.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "yarn": "^1.22.4"
   },

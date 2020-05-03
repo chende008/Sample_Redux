@@ -3,8 +3,8 @@ import {ScrollView, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {RFImage, RFText, RFView} from 'react-native-fast-app';
-import {showToast} from '../../Common/widgets/Loading';
-import {Colors, Const, ImageRes} from '../../Common/storage/Const';
+import {showToast} from '../../common/widgets/Loading';
+import {Colors, Const, ImageRes} from '../../common/storage/Const';
 
 const imgUrl = 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3867329393,945558571&fm=26&gp=0.jpg';
 

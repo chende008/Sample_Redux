@@ -1,54 +1,27 @@
 import React, {PureComponent} from 'react';
 
 import {StyleSheet, View} from 'react-native';
+import {connect} from 'react-redux';
 
-import {RFHttp, RFImage, RFlatList, RFText, RFView} from 'react-native-fast-app';
-import {Colors, CommonStyles, Const} from '../../Common/storage/Const';
-import {showToast} from '../../Common/widgets/Loading';
-import {Api} from '../../Common/http/Api';
-import {netWorkException} from '../../Common/utils/Utils';
+import {RFImage, RFlatList, RFText, RFView} from 'react-native-fast-app';
+import {Colors, CommonStyles, Const} from '../common/storage/Const';
+import {queryDataList} from '../actions/discoverAction';
 
 const headerText = '分页列表支持：无网络，加载中，无数据，加载错误，加载更多等一系列状态展示';
 
-export default class DisCoverController extends PureComponent {
-
-    constructor(props) {
-        super(props);
-        this.state = {dataList: []};
-        this.pageIndex = 1;//页码
-    }
+class DiscoverController extends PureComponent {
 
     render() {
-        let {dataList} = this.state;
         return <View style={[CommonStyles.container, {marginTop: INSETS.top}]}>
-            <RFlatList data={dataList}
-                       onRefresh={() => this.queryDataList(true)}
-                       onLoadMore={() => this.queryDataList(false)}
+            <RFlatList data={this.props.dataList}
+                       onRefresh={() => this.queryData(true)}
+                       onLoadMore={() => this.queryData(false)}
                        refreshStatus={{RefreshingData: {text: '刷新中，请稍候...'}}}
                        ListHeaderComponent={() => <RFText style={styles.header} text={headerText}/>}
                        ref={refreshList => this.refreshList = refreshList}
                        renderItem={({item, index}) => this.renderItem(item, index)}/>
         </View>;
     }
-
-    componentDidMount() {
-        this.queryDataList(true);
-    }
-
-    queryDataList = (isPullDown) => {
-        let {dataList} = this.state;
-        this.pageIndex = isPullDown ? 1 : this.pageIndex + 1;
-        this.refreshList && this.refreshList.refreshPreLoad(isPullDown);
-        let params = {page: isPullDown ? 1 : this.pageIndex};
-        RFHttp().url(Api.queryAnimations).param(params).get((success, {results, last_page}, msg, code) => {
-            this.refreshList && this.refreshList.refreshLoaded(success, isPullDown, params.page >= last_page, netWorkException(code));
-            if (success) {
-                this.setState({dataList: isPullDown ? results : [...dataList, ...results]});
-            } else {
-                showToast(msg);
-            }
-        });
-    };
 
     renderItem = (item, index) => {
         let {title, image_url, type, score, synopsis, members} = item;
@@ -62,8 +35,18 @@ export default class DisCoverController extends PureComponent {
         </RFView>;
     };
 
+    componentDidMount() {
+        this.queryData(true);
+    }
+
+    queryData = (isPullDown) => {
+        let {dataList, pageIndex, queryDataList} = this.props;
+        this.refreshList && queryDataList(isPullDown, pageIndex, this.refreshList, dataList);
+    };
 
 }
+
+export default connect(state => ({...state.discoverReducer}), {queryDataList})(DiscoverController);
 
 const styles = StyleSheet.create({
     header: {

@@ -2,18 +2,18 @@ import React, {PureComponent} from 'react';
 import {BackHandler, Alert} from 'react-native';
 
 import {DebugManager} from 'react-native-debug-tool';
-import {showToast} from '../Common/widgets/Loading';
+import {showToast} from '../common/widgets/Loading';
 import {Manager} from 'react-native-root-toast';
 import DeviceInfo from 'react-native-device-info';
-import {Notify} from '../Common/events/Notify';
+import {Notify} from '../common/events/Notify';
 import {RFImage, RFText, RFWidget} from 'react-native-fast-app';
-import {Colors} from '../Common/storage/Const';
-import HomeController from './Tabs/HomeController';
-import DisCoverController from './Tabs/DisCoverController';
-import MineController from './Tabs/MineController';
-import {Assets} from '../Common/http/Api';
+import {Colors} from '../common/storage/Const';
+import {Assets} from '../common/http/Api';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HttpConfig from '../Common/http/HttpConfig';
+import HttpConfig from '../common/http/HttpConfig';
+import HomeController from '../compoments/HomeController';
+import DiscoverController from '../compoments/DiscoverController';
+import MineController from '../compoments/MineController';
 
 let lastClickTime = (new Date()).valueOf();
 const {Navigator, Screen} = createBottomTabNavigator();
@@ -34,7 +34,7 @@ export default class MainController extends PureComponent {
                     component={HomeController}/>
             <Screen name='Order'
                     options={this.tabItemOption('发现', 'discover_sel.png', 'discover_dis.png')}
-                    component={DisCoverController}/>
+                    component={DiscoverController}/>
             <Screen name='Mine'
                     options={this.tabItemOption('我的', 'mine_sel.png', 'mine_dis.png')}
                     component={MineController}/>
