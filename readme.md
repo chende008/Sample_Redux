@@ -4,7 +4,7 @@ React Navigation + Redux
 
 react-native-fast-app  
 
-### 效果Gif
+### UI截图
 
 <img src="https://github.com/chende008/Sample_Redux/blob/master/images/react_native_redux.jpg">
 
