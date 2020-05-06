@@ -12,7 +12,7 @@ export default class HttpConfig {
         RFHttpConfig().initHttpLogOn(true)
             .initParseDataFunc((result, request, callback) => {
                 let {success, json, message, status, response} = result;
-                DebugManager.appendHttpLogs(request, response);
+                DebugManager.appendHttpLogs(request.params, response);
                 if (status === 503) {// token 过期
                     Notify.TOKEN_EXPIRED.sendEvent({message});
                 } else {
