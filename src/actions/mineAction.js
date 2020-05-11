@@ -5,7 +5,7 @@ import * as types from './types';
 
 export const moviesList = () => { //返回标准的json的http请求
     return dispatch => {
-        RFHttp().url(Api.moviesList).formJson().loadingFunc((loading) => showLoading('请求中，请稍候...', loading)).get((success, json, msg) => {
+        RFHttp().url(Api.btcPrice).formJson().loadingFunc((loading) => showLoading('请求中，请稍候...', loading)).get((success, json, msg) => {
             if (success) {
                 showToast('请求成功');
                 dispatch({type: types.MINE_MOVIES_LIST, value: JSON.stringify(json)});
