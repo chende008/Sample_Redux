@@ -8,4 +8,4 @@ export const Api = {//非标准
     queryMembers: 'https://api.jikan.moe/v3/club/1/members',//查询成员列表
 };
 
-export const Assets = 'https://react-native-fast-app.oss-cn-beijing.aliyuncs.com/demo/';
+export const Assets = 'https://react-native-easy-app.oss-cn-beijing.aliyuncs.com/demo/';

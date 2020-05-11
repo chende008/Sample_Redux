@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-import {RFImage, RFText, RFView} from 'react-native-fast-app';
+import {XImage, XText, XView} from 'react-native-easy-app';
 import {showToast} from '../../common/widgets/Loading';
 import {Colors, Const, ImageRes} from '../../common/storage/Const';
 
@@ -13,26 +13,26 @@ export default class WidgetController extends PureComponent {
     render() {
         return <SafeAreaView style={{flex: 1, backgroundColor: Colors.page_bg}}>
             <ScrollView>
-                <RFText style={styles.grayText} text='文本显示'/>
-                <RFText style={styles.text} onPress={() => showToast('点击事件')} text='文本显示（有触摸效果）'/>
-                <RFView style={styles.iconTextParent}>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='left'/>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='right'/>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='top'/>
-                    <RFText style={styles.iconText} text='可点击' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='bottom' onPress={() => showToast('点击事件')}/>
-                    <RFText style={styles.iconText} text='无图标'/>
-                </RFView>
-                <RFText style={styles.rnTextItem} text='订单' icon={ImageRes.right_arrow} iconSize={16} iconPosition='right' textExtend={true}/>
-                <RFView style={{backgroundColor: Colors.white, marginBottom: 30}}>
-                    <RFText style={styles.rnSearch} text='请输入客户姓名...' icon={ImageRes.search_icon} iconSize={16} iconPosition='left' iconMargin={6} onPress={() => showToast('点击跳转去搜索')}/>
-                </RFView>
-                <RFView style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 30}}>
-                    <RFImage style={{width: 65, height: 65}} icon={ImageRes.login_logo}/>
-                    <RFImage style={{width: 65, height: 65}} icon={imgUrl}/>
-                    <RFImage style={styles.rnImage} icon={imgUrl} onPress={() => showToast('柯南')}/>
-                    <RFImage style={{width: 65, height: 65}} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')}/>
-                    <RFImage style={{width: 65, height: 65}} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')} iconSize={30}/>
-                </RFView>
+                <XText style={styles.grayText} text='文本显示'/>
+                <XText style={styles.text} onPress={() => showToast('点击事件')} text='文本显示（有触摸效果）'/>
+                <XView style={styles.iconTextParent}>
+                    <XText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='left'/>
+                    <XText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='right'/>
+                    <XText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='top'/>
+                    <XText style={styles.iconText} text='可点击' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='bottom' onPress={() => showToast('点击事件')}/>
+                    <XText style={styles.iconText} text='无图标'/>
+                </XView>
+                <XText style={styles.rnTextItem} text='订单' icon={ImageRes.right_arrow} iconSize={16} iconPosition='right' textExtend={true}/>
+                <XView style={{backgroundColor: Colors.white, marginBottom: 30}}>
+                    <XText style={styles.rnSearch} text='请输入客户姓名...' icon={ImageRes.search_icon} iconSize={16} iconPosition='left' iconMargin={6} onPress={() => showToast('点击跳转去搜索')}/>
+                </XView>
+                <XView style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 30}}>
+                    <XImage style={{width: 65, height: 65}} icon={ImageRes.login_logo}/>
+                    <XImage style={{width: 65, height: 65}} icon={imgUrl}/>
+                    <XImage style={styles.rnImage} icon={imgUrl} onPress={() => showToast('柯南')}/>
+                    <XImage style={{width: 65, height: 65}} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')}/>
+                    <XImage style={{width: 65, height: 65}} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')} iconSize={30}/>
+                </XView>
             </ScrollView>
         </SafeAreaView>;
     }

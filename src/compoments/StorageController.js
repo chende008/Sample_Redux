@@ -7,7 +7,7 @@ import {Colors, CommonStyles} from '../common/storage/Const';
 import {toStr} from '../common/utils/Utils';
 import {dateFormat} from '../common/utils/DateUtils';
 import {RNStorage} from '../common/storage/AppStorage';
-import {RFText, RFView} from 'react-native-fast-app';
+import {XText, XView} from 'react-native-easy-app';
 import {NavigationBar} from '../common/widgets/WidgetNavigation';
 import {RNItem, RNLine} from '../common/widgets/WidgetDefault';
 import DeviceInfo from 'react-native-device-info';
@@ -24,31 +24,31 @@ class StorageController extends PureComponent {
         let {text, dataChangedCount, getStr, getJson, raiseCount} = this.props;
         return <SafeAreaView style={CommonStyles.container}>
             <NavigationBar title='数据存储'/>
-            <RFView>
-                <RFView style={{flexDirection: 'row'}}>
+            <XView>
+                <XView style={{flexDirection: 'row'}}>
                     <RNItem text='设置字符串' style={{flex: 1}} onPress={() => RNStorage.str = 'this is a string '}/>
                     <RNItem text='获取字符串' style={{flex: 1}} onPress={() => getStr(RNStorage.str)}/>
-                </RFView>
-                <RFView style={{flexDirection: 'row'}}>
+                </XView>
+                <XView style={{flexDirection: 'row'}}>
                     <RNItem text='设置Json' style={{flex: 1}} onPress={() => RNStorage.json = person}/>
                     <RNItem text='获取Json' style={{flex: 1}} onPress={() => getJson()}/>
-                </RFView>
+                </XView>
                 <RNItem text='随机字符串' onPress={() => {
                     RNStorage[DeviceInfo.getBundleId()] = '随机数据value：' + new Date().valueOf();
                     raiseCount(dataChangedCount);
                 }}/>
-            </RFView>
+            </XView>
             <ScrollView>{
-                Object.keys(RNStorage).map((key) => <RFView style={{backgroundColor: Colors.split_line, marginBottom: 1, padding: 10}}>
-                    <RFText style={{fontSize: 15, color: Colors.text, fontWeight: 'bold'}} text={key + '-> '}/>
-                    {RNStorage[key] && <RFText style={{fontSize: 13, color: Colors.text_light, marginTop: 10}} text={toStr(RNStorage[key])} onPress={() => {
+                Object.keys(RNStorage).map((key) => <XView style={{backgroundColor: Colors.split_line, marginBottom: 1, padding: 10}}>
+                    <XText style={{fontSize: 15, color: Colors.text, fontWeight: 'bold'}} text={key + '-> '}/>
+                    {RNStorage[key] && <XText style={{fontSize: 13, color: Colors.text_light, marginTop: 10}} text={toStr(RNStorage[key])} onPress={() => {
                         Clipboard.setString(toStr(RNStorage[key]));
                         showToast('已复制【' + toStr(RNStorage[key]) + '】到粘贴板');
                     }}/>}
-                </RFView>)}
+                </XView>)}
             </ScrollView>
             <RNLine/>
-            <RFText style={styles.text} text={'文本内容：' + text}/>
+            <XText style={styles.text} text={'文本内容：' + text}/>
         </SafeAreaView>;
     }
 }

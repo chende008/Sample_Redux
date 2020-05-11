@@ -1,5 +1,5 @@
 import React from 'react';
-import {RFHttpConfig} from 'react-native-fast-app';
+import {XHttpConfig} from 'react-native-easy-app';
 import {DebugManager} from 'react-native-debug-tool';
 import {Notify} from '../events/Notify';
 
@@ -9,7 +9,7 @@ import {Notify} from '../events/Notify';
 export default class HttpConfig {
 
     static initHttpConfig() {
-        RFHttpConfig().initHttpLogOn(true)
+        XHttpConfig().initHttpLogOn(true)
             .initParseDataFunc((result, request, callback) => {
                 let {success, json, message, status, response} = result;
                 DebugManager.appendHttpLogs(request.params, response);

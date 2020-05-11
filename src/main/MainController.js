@@ -6,7 +6,7 @@ import {showToast} from '../common/widgets/Loading';
 import {Manager} from 'react-native-root-toast';
 import DeviceInfo from 'react-native-device-info';
 import {Notify} from '../common/events/Notify';
-import {RFImage, RFText, RFWidget} from 'react-native-fast-app';
+import {XImage, XText, XWidget} from 'react-native-easy-app';
 import {Colors} from '../common/storage/Const';
 import {Assets} from '../common/http/Api';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -23,7 +23,7 @@ export default class MainController extends PureComponent {
     constructor(props) {
         super(props);
         this.initConfig();
-        RFWidget.initResource(Assets);
+        XWidget.initResource(Assets);
         global.tabNavigator = props.navigation;
     }
 
@@ -44,10 +44,10 @@ export default class MainController extends PureComponent {
     tabItemOption = (title, iconChecked, iconUnChecked) => {
         return {
             tabBarLabel: ({focused}) => {
-                return <RFText text={title} style={{fontSize: 10, marginBottom: 3, fontWeight: focused ? 'bold' : 'normal', color: focused ? Colors.text_light : Colors.text_disable}}/>;
+                return <XText text={title} style={{fontSize: 10, marginBottom: 3, fontWeight: focused ? 'bold' : 'normal', color: focused ? Colors.text_light : Colors.text_disable}}/>;
             },
             tabBarIcon: ({focused}) => {
-                return <RFImage iconSize={24} icon={focused ? iconChecked : iconUnChecked}/>;
+                return <XImage iconSize={24} icon={focused ? iconChecked : iconUnChecked}/>;
             },
         };
     };

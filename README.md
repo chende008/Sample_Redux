@@ -4,7 +4,7 @@
 
  react-navigation  页面导航
 
- react-native-fast-app 基础服务
+ react-native-easy-app 基础服务
 
  redux 、react-redux  数据管理
 
