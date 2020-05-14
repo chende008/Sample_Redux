@@ -1,14 +1,19 @@
 import * as types from '../actions/types';
 
-const initState = {pageIndex: 0, dataList: []};
+const initState = {
+    title: '',
+    loading: true,
+    canGoBack: false,
+    url: 'https://www.baidu.com',
+};
 
 export default (state = initState, action) => {
     const {type, data} = action;
     switch (type) {
-        case types.DISCOVER_QUERY_RESET:
+        case types.WEBVIEW_RELOAD_URL:
+            return {...state, url: data};
+        case types.WEBVIEW_RELOAD_INFO:
             return {...state, ...data};
-        case types.DISCOVER_QUERY_ADD:
-            return {...data, dataList: [...state.dataList, ...data.dataList]};
         default:
             return state;
 

@@ -18,8 +18,6 @@ const person = {age: 25, name: 'Tom', gender: 'male', time: dateFormat(new Date(
 
 class StorageController extends PureComponent {
 
-    //this.setState({text:  }) ||  this.setState({text: JSON.stringify(RNStorage.json)})
-
     render() {
         let {text, dataChangedCount, getStr, getJson, raiseCount} = this.props;
         return <SafeAreaView style={CommonStyles.container}>

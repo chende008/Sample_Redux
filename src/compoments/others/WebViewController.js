@@ -9,21 +9,14 @@ import ProgressBar from '../../common/widgets/ProgressBar';
 import WebView from 'react-native-webview';
 import {CommonStyles} from '../../common/storage/Const';
 import {DebugManager} from 'react-native-debug-tool';
+import {connect} from 'react-redux';
+import {addRandom, delRandom} from '../../actions/homeAction';
+import {reloadInfo, reloadPage} from '../../actions/webViewAction';
 
-export default class WebViewController extends PureComponent {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: '',
-            loading: true,
-            canGoBack: false,
-            url: 'https://www.baidu.com',
-        };
-    }
+class WebViewController extends PureComponent {
 
     render() {
-        let {title, loading, url, canGoBack} = this.state;
+        let {title, loading, url, canGoBack, reloadInfo} = this.props;
         return <SafeAreaView style={CommonStyles.container}>
             <NavigationBar title={title} onBack={() => canGoBack ? this.webView.goBack() : navigation.goBack()}/>
             <View style={{flex: 1}}>
@@ -35,14 +28,14 @@ export default class WebViewController extends PureComponent {
                          onMessage={({nativeEvent}) => {
                              let postMsgData = JSON.parse(nativeEvent.data);
                              if (postMsgData.hasOwnProperty('TitleEvent')) {
-                                 this.setState({...nativeEvent, ...postMsgData});
+                                 reloadInfo({...nativeEvent, ...postMsgData});
                              } else {
                                  WebUtils.msgFromH5(postMsgData, this.webView);
                              }
                          }}
                          onNavigationStateChange={params => {
                              let {url, ...other} = params;
-                             this.setState({...other});
+                             reloadInfo({...other});
                              DebugManager.appendWebViewLogs(url);
                          }}
                          onLoadProgress={({nativeEvent}) => {
@@ -69,10 +62,12 @@ export default class WebViewController extends PureComponent {
 
     reloadPage = ({pageName, url}) => {
         if ('WebViewController'.equals(pageName) && url) {
-            this.setState({url});
+            this.props.reloadPage(url);
         }
     };
 }
+
+export default connect(state => ({...state.webViewReducer}), {reloadInfo, reloadPage})(WebViewController);
 
 const styles = StyleSheet.create({
     parent: {

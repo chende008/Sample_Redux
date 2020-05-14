@@ -1,6 +1,6 @@
 import * as types from '../actions/types';
 
-export default (initState = '', action) => {
+export default (state = '', action) => {
     let {type, data} = action;
     switch (type) {
         case types.MINE_MOVIES_LIST:
@@ -9,6 +9,6 @@ export default (initState = '', action) => {
         case types.MINE_CITY_LIST:
             return data;
         default:
-            return initState;
+            return state;
     }
 }

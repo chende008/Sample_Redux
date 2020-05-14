@@ -11,7 +11,7 @@ class HomeController extends PureComponent {
         let {randomList, addRandom, delRandom} = this.props;
         return <View style={[CommonStyles.container, {marginTop: INSETS.top}]}>
             <XText text={'条目数量：' + randomList.length} style={{fontSize: 13, fontWeight: 'bold', color: Colors.yellow, paddingLeft: 15, paddingTop: 15}}/>
-            <XText text='添加随机数' style={styles.btn} onPress={() => addRandom(this.generateRandom())}/>
+            <XText text='添加随机数' style={styles.btn} onPress={() => addRandom(randomList, this.generateRandom())}/>
             <ScrollView>{
                 randomList && randomList.map((item, index) => {
                     return <XText key={index}

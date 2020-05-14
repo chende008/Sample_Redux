@@ -33,10 +33,7 @@ class MineController extends PureComponent {
 
 }
 
-export default connect(
-    state => ({content: state.mineReducer}),
-    {moviesList, animalImageList, queryMemberList, getCityList},
-)(MineController);
+export default connect(state => ({content: state.mineReducer}), {moviesList, animalImageList, queryMemberList, getCityList})(MineController);
 
 const styles = StyleSheet.create({
     btn: {

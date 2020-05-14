@@ -1,6 +1,11 @@
 import * as types from './types';
 
-export const addRandom = (number) => ({type: types.RANDOM_ADD, data: number});
+export const addRandom = (randomList, number) => {
+    return dispatch => {
+        randomList.push(number);
+        dispatch({type: types.RANDOM_ADD, data: randomList});
+    };
+};
 
 export const delRandom = (randomList, index) => {
     return dispatch => {
