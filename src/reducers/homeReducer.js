@@ -1,12 +1,12 @@
 import * as types from '../actions/types';
 
 export default (initState = [], action) => {
-    let {type, value} = action;
+    let {type, data} = action;
     switch (type) {
         case types.RANDOM_ADD:
-            return [...initState, value];
+            return [...initState, data];
         case types.RANDOM_DEL:
-            return [...value];
+            return [...data];
         default:
             return initState;
     }

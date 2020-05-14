@@ -14,7 +14,7 @@ export const queryDataList = (isPullDown, pageIndex, refreshList, dataList) => {
                 refreshList.refreshLoaded(success, isPullDown, params.page >= last_page, netWorkException(code));
                 if (success) {
                     dispatch({
-                        type: DISCOVER_QUERY, value: {
+                        type: DISCOVER_QUERY, data: {
                             pageIndex: params.page,
                             dataList: isPullDown ? results : [...dataList, ...results],
                         },
