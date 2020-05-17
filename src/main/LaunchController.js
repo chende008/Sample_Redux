@@ -20,7 +20,6 @@ export default class LaunchController extends PureComponent {
         }, (data) => {
             this.printLog(data);
         }, '1.0', AsyncStorage);
-        XWidget.initResource(Assets).initReferenceScreen(375, 677);
     };
 
     printLog = (data) => {

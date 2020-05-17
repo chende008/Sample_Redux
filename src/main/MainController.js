@@ -23,7 +23,6 @@ export default class MainController extends PureComponent {
     constructor(props) {
         super(props);
         this.initConfig();
-        XWidget.initResource(Assets);
         global.tabNavigator = props.navigation;
     }
 

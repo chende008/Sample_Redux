@@ -13,6 +13,8 @@ import MainController from './main/MainController';
 import StorageController from './compoments/StorageController';
 import WebViewController from './compoments/others/WebViewController';
 import rootReducer from './reducers/rootReducer';
+import {XWidget} from 'react-native-easy-app';
+import {Assets} from './common/http/Api';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -31,6 +33,7 @@ export default function App() {
 
 function ScreenList() {
     global.INSETS = useSafeArea();
+    XWidget.initResource(Assets).initReferenceScreen(375, 677);
     const {Navigator, Screen} = createStackNavigator();
     return <Navigator initialPage={LaunchController} headerMode='none'>
         <Screen name='Launch' component={LaunchController}/>
