@@ -2,7 +2,7 @@
 
 #### 基础库
 
- react-navigation  页面导航
+ react-navigation 5.x  页面导航
 
  react-native-easy-app 基础服务
 
