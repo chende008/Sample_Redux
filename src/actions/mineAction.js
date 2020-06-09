@@ -18,7 +18,7 @@ export const moviesList = () => { //返回标准的json的http请求
 
 export const animalImageList = () => { //返回标准的json的http请求
     return dispatch => {
-        XHttp().url(Api.animalImageList).get((success, json, msg, code) => {
+        XHttp().url(Api.filmsList).get((success, json, msg, code) => {
             if (success) {
                 showToast('请求成功');
                 dispatch({type: types.MINE_ANIMAL_LIST, data: JSON.stringify(json)});
