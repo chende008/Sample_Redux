@@ -5455,10 +5455,10 @@ react-native-device-info@^5.5.6:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-5.6.1.tgz#3ae88d8659b7b64d204dbfc39f69126b769363d4"
   integrity sha512-FxjenoDZJKT53pp/Tl5gMsw5DA82Y5tOuySQlKS5AaDmw+Bu6EqEJjt0z4TRhJOVoqVJ35oCiZ3xViVbz/hB0w==
 
-react-native-easy-app@^1.7.6:
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/react-native-easy-app/-/react-native-easy-app-1.7.6.tgz#6133180f2b6a506ced984aa02a9830a4363bc269"
-  integrity sha512-bJXsyTb7+dJHhejcb+fC7Q8W+TGDrTGJN21noxsJZayjGHwFRWJTBopeGdnKqNYCj0b2HIrf/1s5zz3O2cJGng==
+react-native-easy-app@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/react-native-easy-app/-/react-native-easy-app-1.7.7.tgz#986a3b6d776d01489fb61befa724e83dd3aeeb43"
+  integrity sha512-5CsYSmcK0+Tp1BFJHGgywYXML137+IcGL2aWybMimd4i9O0G/mPMnSF8hLaR+fw2ONOA3OInSYXlqImddiJJ9w==
 
 react-native-gesture-handler@^1.6.1:
   version "1.6.1"
