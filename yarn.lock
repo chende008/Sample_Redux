@@ -5445,10 +5445,10 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-debug-tool@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-debug-tool/-/react-native-debug-tool-1.1.2.tgz#713ed6d77c2f626746d0f6780dc1ffb9b7720d26"
-  integrity sha512-SLgDPvKOeBuhlvmLhwDhhqiJeX04b4AjRqVdkVGv5jGYN0U0DMbZZ8h9f6tL7PiHT7GqWibH1hHR+Pcrz5y4hw==
+react-native-debug-tool@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.npmjs.org/react-native-debug-tool/-/react-native-debug-tool-1.1.6.tgz#ca4ec89a1173183b3316cecab049093b45ec95a6"
+  integrity sha512-y9UOzCBYrcw/HIU3Pp6Dwd/IpTycuSR5v/FSWzxvZPiO9i4a/hKDAj9QIcetZsmAAC5C8Fi+FiS3FI5Q/kAdyA==
 
 react-native-device-info@^5.5.6:
   version "5.6.1"
